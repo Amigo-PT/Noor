@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نور | تغذية طفلك صح</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-950: #082f63;
+    --blue-900: #0d47a1;
+    --blue-800: #1565c0;
+    --blue-600: #1e88e5;
+    --blue-400: #42a5f5;
+    --blue-300: #64b5f6;
+    --blue-200: #90caf9;
+    --blue-100: #bbdefb;
+    --blue-50: #e3f2fd;
+    --green-700: #047857;
+    --green-600: #059669;
+    --green-500: #10b981;
+    --green-400: #34d399;
+    --green-300: #6ee7b7;
+    --green-200: #a7f3d0;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --teal-300: #5eead4;
+    --pink-100: #ffe4f1;
+    --pink-300: #f9a8d4;
+    --glass: rgba(255,255,255,0.72);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    color: var(--blue-950);
+    background:
+      radial-gradient(60rem 60rem at 110% -10%, rgba(110,231,183,0.4), transparent 60%),
+      radial-gradient(50rem 50rem at -10% 15%, rgba(144,202,249,0.5), transparent 60%),
+      radial-gradient(70rem 70rem at 50% 120%, rgba(16,185,129,0.35), transparent 60%),
+      linear-gradient(160deg, #eaf6ff 0%, #d1fae5 30%, #e3f2fd 62%, #c8f3e2 100%);
+    background-attachment: fixed;
+    padding: 34px 18px 90px;
+    overflow-x: hidden;
+  }
+
+  /* ====== حبيبات/نجوم متحركة ====== */
+  .particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) scale(1); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+  }
+
+  /* ====== الهيدر ====== */
+  header {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .greeting {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--blue-800);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(227,242,253,0.9));
+    border: 1.5px solid rgba(110,231,183,0.8);
+    padding: 6px 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px -6px rgba(13,71,161,0.2);
+    margin-top: 10px;
+  }
+
+  .hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1.5px solid rgba(255,255,255,0.85);
+    border-radius: 34px;
+    padding: 20px 32px;
+    box-shadow:
+      0 20px 50px -12px rgba(13,71,161,0.28),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    margin-bottom: 22px;
+  }
+
+  .logo-badge {
+    position: relative;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, #ffffff, #bbdefb, #42a5f5, #34d399, #ffffff);
+    padding: 5px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 14px 32px -6px rgba(21,101,192,0.45);
+    animation: spinRing 12s linear infinite;
+  }
+  .logo-badge .inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffffff, #e3f2fd);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    animation: bob 3.4s ease-in-out infinite;
+  }
+  .logo-badge .wave {
+    position: absolute;
+    bottom: 2px; left: -2px;
+    font-size: 22px;
+    animation: waveHand 1.8s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+  @keyframes spinRing { to { transform: rotate(360deg); } }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  @keyframes waveHand {
+    0%, 100% { transform: rotate(0); }
+    25%      { transform: rotate(20deg); }
+    50%      { transform: rotate(-12deg); }
+    75%      { transform: rotate(20deg); }
+  }
+
+  .hero-text { text-align: right; }
+  header h1 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.15;
+    background: linear-gradient(110deg, #043a33 0%, var(--blue-600) 40%, var(--green-500) 72%, #043a33 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+  }
+  @keyframes shine { to { background-position: 200% center; } }
+
+  .welcome-note {
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.9;
+    color: var(--blue-900);
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(110,231,183,0.55);
+    border-radius: 20px;
+    padding: 14px 22px;
+    box-shadow: 0 10px 26px -10px rgba(13,71,161,0.18);
+  }
+
+  .sparkle-row { margin-top: 16px; }
+  .sparkle { display: inline-block; font-size: 30px; animation: twinkle 2.4s ease-in-out infinite; }
+  .sparkle.s1 { animation-delay: 0s; }
+  .sparkle.s2 { animation-delay: 0.8s; }
+  .sparkle.s3 { animation-delay: 1.6s; }
+  @keyframes twinkle {
+    0%, 100% { transform: scale(1) rotate(0); opacity: 1; }
+    50%      { transform: scale(1.4) rotate(15deg); opacity: 0.55; }
+  }
+
+  /* ====== الشبكة ====== */
+  .grid {
+    max-width: 780px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .track {
+    background: linear-gradient(150deg, rgba(255,255,255,0.95), rgba(231,249,240,0.85));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255,255,255,0.9);
+    border-radius: 26px;
+    padding: 18px 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 10px 26px -8px rgba(13,71,161,0.16),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: transform 0.3s cubic-bezier(0.2,0.9,0.3,1.2),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+    animation: cardIn 0.5s ease backwards;
+  }
+  .track:nth-child(1) { animation-delay: 0.03s; }
+  .track:nth-child(2) { animation-delay: 0.07s; }
+  .track:nth-child(3) { animation-delay: 0.11s; }
+  .track:nth-child(4) { animation-delay: 0.15s; }
+  .track:nth-child(5) { animation-delay: 0.19s; }
+  .track:nth-child(6) { animation-delay: 0.23s; }
+  .track:nth-child(7) { animation-delay: 0.27s; }
+  .track:nth-child(8) { animation-delay: 0.31s; }
+  .track:nth-child(9) { animation-delay: 0.35s; }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(26px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .track:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 44px -12px rgba(13,71,161,0.3);
+    border-color: var(--blue-200);
+  }
+
+  .track::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 0;
+    background: linear-gradient(270deg, rgba(144,202,249,0.45), rgba(144,202,249,0));
+    transition: width 0.35s ease;
+  }
+  .track:hover::before { width: 60px; }
+
+  .track.active {
+    border-color: transparent;
+    background: linear-gradient(150deg, #ffffff, #d8f3e7);
+    box-shadow:
+      0 24px 50px -12px rgba(5,150,105,0.35),
+      0 0 0 3px rgba(52,211,153,0.28);
+    transform: translateY(-3px);
+  }
+  .track.active::before {
+    width: 8px;
+    background: linear-gradient(180deg, var(--green-300), var(--blue-400), var(--blue-800));
+  }
+
+  .track-row { display: flex; align-items: center; gap: 18px; position: relative; z-index: 1; }
+
+  .icon-box {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #ffffff, var(--blue-50));
+    border: 2px solid var(--blue-100);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .track:hover .icon-box { transform: scale(1.12) rotate(-6deg); }
+  .track.active .icon-box {
+    background: linear-gradient(145deg, #ffffff, #d8f3e7);
+    border-color: var(--green-400);
+    transform: scale(1.08);
+    box-shadow: 0 8px 18px -4px rgba(5,150,105,0.4);
+  }
+
+  .track h3 {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue-950);
+    line-height: 1.55;
+    transition: color 0.3s ease;
+  }
+  .track.active h3 { color: var(--blue-800); }
+
+  .play-btn {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6ee7b7, #1565c0);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    position: relative;
+    box-shadow: 0 10px 22px -4px rgba(21,101,192,0.5), inset 0 2px 6px rgba(255,255,255,0.4);
+    transition: transform 0.25s cubic-bezier(0.2,0.9,0.3,1.3), box-shadow 0.25s ease;
+  }
+  .track:hover .play-btn { transform: scale(1.12) rotate(8deg); box-shadow: 0 14px 28px -4px rgba(21,101,192,0.6); }
+
+  .play-btn::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(52,211,153,0.5);
+    animation: ring 2.4s ease-out infinite;
+    opacity: 0;
+  }
+  @keyframes ring {
+    0%   { transform: scale(0.75); opacity: 0.9; }
+    100% { transform: scale(1.5);  opacity: 0; }
+  }
+  .track.active .play-btn {
+    background: linear-gradient(135deg, #34d399, #0d47a1);
+    transform: scale(1.1);
+    animation: beat 1.4s ease-in-out infinite;
+  }
+  .track.active .play-btn::after { animation: none; opacity: 0.55; }
+  @keyframes beat {
+    0%, 100% { box-shadow: 0 10px 22px -4px rgba(21,101,192,0.5); }
+    50%      { box-shadow: 0 14px 34px -2px rgba(21,101,192,0.75); }
+  }
+
+  /* ====== المشغل المنبثق من الكارت ====== */
+  .track-player {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1), opacity 0.4s ease, margin-top 0.45s ease;
+  }
+  .track.active .track-player {
+    max-height: 110px;
+    opacity: 1;
+    margin-top: 16px;
+  }
+
+  .player-panel {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(236,253,245,0.9));
+    border: 1.5px solid rgba(110,231,183,0.6);
+    border-radius: 18px;
+    padding: 12px 14px 14px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  .player-head {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-bottom: 8px;
+  }
+  .eq {
+    display: flex; align-items: flex-end; gap: 3px; height: 20px;
+  }
+  .eq span {
+    width: 4px; border-radius: 3px;
+    background: linear-gradient(180deg, var(--teal-300), var(--green-600));
+    animation: eq 1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+  .eq span:nth-child(1) { height: 8px;  animation-delay: 0s; }
+  .eq span:nth-child(2) { height: 16px; animation-delay: 0.2s; }
+  .eq span:nth-child(3) { height: 12px; animation-delay: 0.4s; }
+  .eq span:nth-child(4) { height: 18px; animation-delay: 0.6s; }
+  .eq span:nth-child(5) { height: 10px; animation-delay: 0.3s; }
+  @keyframes eq {
+    0%, 100% { transform: scaleY(0.4); }
+    50%      { transform: scaleY(1); }
+  }
+  .eq.paused span { animation-play-state: paused; transform: scaleY(0.4); }
+
+  .track-player audio {
+    width: 100%;
+    height: 44px;
+    outline: none;
+    border-radius: 30px;
+  }
+  audio::-webkit-media-controls-panel { background: linear-gradient(135deg, #ffffff, #ecfdf5); }
+
+  /* ====== شريط التقدم ====== */
+  .progress-wrap {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 7px;
+    background: rgba(144,202,249,0.3);
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--green-300), var(--blue-400), var(--blue-800));
+    transition: width 0.3s linear;
+    border-radius: 0 7px 7px 0;
+  }
+
+  .foot {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .foot-inner {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.85);
+    border-radius: 50px;
+    padding: 10px 26px;
+    box-shadow: 0 12px 30px -8px rgba(13,71,161,0.2);
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--blue-800);
+  }
+  .foot-inner .dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--green-400), var(--blue-600)); animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 24px 12px 70px; }
+    header h1 { font-size: 34px; }
+    .hero { padding: 14px 18px; gap: 12px; border-radius: 24px; }
+    .logo-badge { width: 72px; height: 72px; }
+    .logo-badge .inner { font-size: 36px; }
+    .icon-box { width: 48px; height: 48px; font-size: 25px; border-radius: 14px; }
+    .track h3 { font-size: 16px; }
+    .play-btn { width: 50px; height: 50px; }
+    .track-row { gap: 12px; }
+    .welcome-note { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <div class="logo-badge">
+      <div class="inner">👶</div>
+      <span class="wave">👋</span>
+    </div>
+    <div class="hero-text">
+      <h1>مشروع نور</h1>
+      <div class="greeting">🌷 أهلاً بيكي يا ماما</div>
+    </div>
+  </div>
+
+  <div class="welcome-note">
+    دوسي على أي عنوان واسمحي لنور يساعدك خطوة بخطوة 😊✨
+    <br>كل ريكورد بيتشرحلك بلغة بسيطة، عشان تكوني مطمّنة ومتأكدة من صحة أولادك 💙
+  </div>
+
+  <div class="sparkle-row">
+    <span class="sparkle s1">⭐</span>
+    <span class="sparkle s2">✨</span>
+    <span class="sparkle s3">🌟</span>
+  </div>
+</header>
+
+<main class="grid" id="trackList"></main>
+
+<div class="foot">
+  <div class="foot-inner"><span class="dot"></span> نور معاكِ في كل خطوة 💙</div>
+</div>
+
+<script>
+  // ██████████████████████████████████████████████████████████████████
+  // 👇 ضع هنا روابط الريكوردات بعد رفعها على GitHub.
+  // الـ file = رابط الملف مباشرة، الـ title = عنوان الريكورد.
+  // ██████████████████████████████████████████████████████████████████
+  const tracks = [
+    { title: "الرضاعة والتغذية في أول 6 شهور",                  file: "audio/1.mp4", icon: "🍼" },
+    { title: "الأكل والرضاعة من بعد 6 شهور",                    file: "audio/2.mp4", icon: "🥣" },
+    { title: "إزاي تخلي وقت الأكل هادي ومن غير عصبية؟",         file: "audio/3.mp4", icon: "😌" },
+    { title: "الحديد والأنيميا: تحمي ابنك إزاي وتطمني عليه؟",   file: "audio/4.mp4", icon: "💪" },
+    { title: "أكل أطفالنا من سن سنتين لـ 7 سنين",               file: "audio/5.mp4", icon: "🧒" },
+    { title: "نظافة الأكل وسلامته لسلامة بطن ابنك",              file: "audio/6.mp4", icon: "🧼" },
+    { title: "إزاي الأكل الصح بيبني جسم طفلك ومخه؟",            file: "audio/7.mp4", icon: "🧠" },
+    { title: "لو ابنك غلبك في الأكل وما بياكلش كويس",            file: "audio/8.mp4", icon: "🍽️" },
+    { title: "إمتى تحسي إن الطفل محتاج دكتور؟",                 file: "audio/9.mp4", icon: "🩺" },
+  ];
+
+  const trackList = document.getElementById('trackList');
+
+  let currentIndex = -1;
+  const audioEls = [];
+
+  function spawnParticles() {
+    const colors = ['#90caf9', '#64b5f6', '#34d399', '#6ee7b7', '#a7f3d0', '#f9a8d4'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('span');
+      p.className = 'particle';
+      const size = 3 + Math.random() * 7;
+      p.style.cssText = `
+        width: ${size}px; height: ${size}px;
+        left: ${Math.random() * 100}vw;
+        bottom: -20px;
+        background: ${colors[i % colors.length]};
+        animation-duration: ${10 + Math.random() * 16}s;
+        animation-delay: ${Math.random() * 14}s;
+      `;
+      document.body.appendChild(p);
+    }
+  }
+
+  function setActive(i) {
+    document.querySelectorAll('.track').forEach((el, idx) => {
+      const active = idx === i;
+      el.classList.toggle('active', active);
+      const btn = el.querySelector('.play-btn');
+      btn.textContent = active ? '🎵' : '▶';
+      const eq = el.querySelector('.eq');
+      if (eq) eq.classList.toggle('paused', !active);
+      if (!active) el.querySelector('.progress-fill').style.width = '0';
+    });
+  }
+
+  function playTrack(i) {
+    audioEls.forEach((a, idx) => { if (idx !== i) a.pause(); });
+    currentIndex = i;
+    setActive(i);
+    audioEls[i].play();
+  }
+
+  function render() {
+    tracks.forEach((t, i) => {
+      const div = document.createElement('div');
+      div.className = 'track';
+      div.innerHTML = `
+        <div class="track-row">
+          <div class="icon-box">${t.icon}</div>
+          <h3>${t.title}</h3>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="track-player">
+          <div class="player-panel">
+            <div class="player-head">
+              <div class="eq"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <audio controls preload="none"></audio>
+          </div>
+        </div>
+        <div class="progress-wrap"><div class="progress-fill"></div></div>
+      `;
+
+      const audio = div.querySelector('audio');
+      audio.src = t.file;
+      audioEls.push(audio);
+
+      div.addEventListener('click', () => {
+        if (i === currentIndex) {
+          audio.paused ? audio.play() : audio.pause();
+        } else {
+          playTrack(i);
+        }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        const fillEl = div.querySelector('.progress-fill');
+        if (audio.duration) {
+          fillEl.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        }
+      });
+
+      audio.addEventListener('play', () => { setActive(i); currentIndex = i; });
+      audio.addEventListener('pause', () => {
+        const eq = div.querySelector('.eq');
+        if (eq) eq.classList.add('paused');
+      });
+
+      audio.addEventListener('ended', () => {
+        const next = i + 1;
+        if (next < tracks.length) {
+          playTrack(next);
+        } else {
+          setActive(-1);
+          currentIndex = -1;
+        }
+      });
+
+      trackList.appendChild(div);
+    });
+  }
+
+  spawnParticles();
+  render();
+</script>
+</body>
+</html>
